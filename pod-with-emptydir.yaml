@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: d0227394891185843558a3089f7d00a1d2cb20ba992d44e0d4642e3fdbe726f3
+    cni.projectcalico.org/podIP: 192.168.1.4/32
+    cni.projectcalico.org/podIPs: 192.168.1.4/32
+  creationTimestamp: "2024-12-05T01:07:58Z"
+  labels:
+    run: empty
+  name: empty
+  namespace: default
+  resourceVersion: "9244"
+  uid: a5f3e475-687a-4e4d-99aa-871b38ef5efd
+spec:
+  containers:
+  - command:
+    - /bin/sh
+    args:
+    - "-c"
+    - "sleep 80000"
+    image: busybox
+    imagePullPolicy: Always
+    name: empty
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-5v9ft
+      readOnly: true
+    - mountPath: /var/log
+      name: vol
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: node01
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
